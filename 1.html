@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //除了冒泡排序外，其实还有很多诸如 插入排序,快速排序，希尔排序等。每一种排序算法都有各自的特点。全部掌握也不需要，但是心底一定要熟悉几种算法。 比如快速排序，其效率很高，而其基本原理如图(来自wiki)：
+
+  //算法参考某个元素值，将小于它的值，放到左数组中，大于它的值的元素就放到右数组中，然后递归进行上一次左右数组的操作，返回合并的数组就是已经排好顺序的数组了。
+
+  function quickSort(arr) {
+
+      if(arr.length<=1) {
+          return arr;
+      }
+
+      let leftArr = [];
+      let rightArr = [];
+      let q = arr[0];
+      for(let i = 1,l=arr.length; i<l; i++) {
+          if(arr[i]>q) {
+              rightArr.push(arr[i]);
+          }else{
+              leftArr.push(arr[i]);
+          }
+      }
+
+      return [].concat(quickSort(leftArr),[q],quickSort(rightArr));
+  }
+
+  module.exports = quickSort;  
+  </script>
+</body>
+</html>
